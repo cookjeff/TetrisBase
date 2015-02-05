@@ -15,10 +15,10 @@ public:
 		isOccupied = false;
 		// Create it's "renderSquare" that defines its x and y
 		// position and height, relative to the screen size
-		renderSquare.x = xpos * 0.375 * screen_width;
-		renderSquare.y = ypos * 1.0 / 20.0 * screen_width;
-		renderSquare.w = (0.375 * screen_width) / 10.0;
-		renderSquare.h = 0.05 * 
+		renderSquare.x = (int)(xpos * 0.375 * SCREEN_WIDTH);
+		renderSquare.y = (int)(ypos * 0.05 * SCREEN_HEIGHT);
+		renderSquare.w = (int)((0.375 * SCREEN_WIDTH) / 10.0);
+		renderSquare.h = (int)(0.05 * SCREEN_HEIGHT);
 	}
 
 };
@@ -29,7 +29,7 @@ class TetrisBoard {
 	TetrisBoard() {
 		for (int i = 0; i < 10; i++) {
 			for (int k = 0; k < 20; k++)
-				gridSquares[i][k].init();
+				gridSquares[i][k].init(i,k);
 		}
 	}
 	
