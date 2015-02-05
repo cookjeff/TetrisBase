@@ -4,8 +4,8 @@
 #include "TetrisBoard.cpp"
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+static const int SCREEN_WIDTH = 640;
+static const int SCREEN_HEIGHT = 480;
 
 //Starts up SDL and creates window
 bool init();
@@ -127,23 +127,30 @@ int main(int argc, char* args[])
 				renderSquare.y = 256;
 				renderSquare.h = 128;
 				renderSquare.w = 128;
-				
 
+				// Declare our tetris board
+				TetrisBoard gameBoard(gScreenSurface);
+
+				gameBoard.Render();
+
+				GridSquare testing1;
+				testing1.init(0, 0, gHelloWorld);
+				SDL_BlitScaled(testing1.gridTile, NULL, gScreenSurface, &testing1.renderSquare);
+
+				//############################################
+				//### TODO: scale board to surface, not screen size
+				//############################################
 
 				//Apply the image
 				SDL_BlitScaled(gHelloWorld, NULL, gScreenSurface, &renderSquare);
-
-				
 
 				//Update the surface
 				SDL_UpdateWindowSurface(gWindow);
 
 			}
-			
+			//Wait two seconds
+			//SDL_Delay(2000);
 		}
-
-		//Wait two seconds
-		//SDL_Delay(2000);
 
 	}
 
